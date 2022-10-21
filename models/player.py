@@ -35,3 +35,9 @@ class Player:
         """
 
         self.choise :bool = True if choise in ['X','x'] else False
+
+
+    def get_choise(self) -> bool:
+        return self.choise
+
+

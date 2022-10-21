@@ -7,4 +7,8 @@ class __View:
 
 from .start import *
 from .addplayer import *
+from .playing import *
+from .showiner import *
+from .playagain import *
+
 

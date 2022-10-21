@@ -41,6 +41,6 @@ class Start(__View):
                          |   |   |   |
 
         shel we start who will begin first you or your friend !
-      \r""")
-
+      """)
+        _ = input(" press ENTER to begin ..")
 
