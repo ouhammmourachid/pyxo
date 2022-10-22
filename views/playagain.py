@@ -1,7 +1,9 @@
-from . import __View
+from . import View
 
-class PlayAgain(__View):
+
+class PlayAgain(View):
+
 
     def print(self) -> str:
-        return input("do you want to play again (yes,no)")
+        return input("\n\ndo you want to play again (yes,no)")
 

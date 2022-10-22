@@ -1,14 +1,14 @@
-# libraries
-from views.start import Start 
+#!/usr/bin/env python3
+
+from controler.engin import Engin 
 import time
 import os
 
+
 def main() -> None:
     
-    start = Start()
-    start.print()
-    _ = input("to continue press enter :")
-    start.print()
+    game = Engin()
+    game.run()
 
 
 if __name__ == '__main__':
