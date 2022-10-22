@@ -1,6 +1,15 @@
-from . import __View 
+from . import View 
+from utils import clear
 
-class ShoWiner(__View):
+class ShoWiner(View):
+
+    def __init__(self,controler:"Engin") -> None:
+        self.controler:"Engin" = controler
 
     def print(self) -> None:
-        pass
+        clear()
+        print(f"\n\n the winer is !!!!! {self.controler.winer} !!!!")
+
+    def print_no_winer(self) -> None:
+        print("\n\n   the game is a tie no one win   ")
+

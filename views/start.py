@@ -1,7 +1,7 @@
 from utils import clear
-from . import __View
+from . import View
 
-class Start(__View):
+class Start(View):
 
     """this class represent this view of the strat of the game 
     that show the rule of the game of the XO like this :

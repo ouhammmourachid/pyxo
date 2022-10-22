@@ -38,3 +38,11 @@ class Board:
         self.row_1 :list[bool] = 3*[None]
         self.row_1 :list[bool] = 3*[None]
         self.row_1 :list[bool] = 3*[None]
+
+    
+    def check_move(self,move :int) -> bool:
+        if move > 0 and move < 4: return True if self.row_1[move] is None else False
+        if move >3 and move < 7: return True if self.row_2[move] is None else False
+        if move > 6 and move < 10: return True if self.row_2[move] is None else False
+        return False
+
