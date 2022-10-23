@@ -22,7 +22,7 @@ class Player:
         self.name :str = name
         self.points :int = 0
 
-    def set_choise(self,choise:str) -> None:
+    def set_choise(self,choise:bool) -> None:
         
         """ this methode allow you to set the choise of the player
         like this:
@@ -34,8 +34,7 @@ class Player:
         ```
         """
 
-        self.choise :bool = True if choise in ['X','x'] else False
-
+        self.choise :bool = choise
 
     def get_choise(self) -> bool:
         return self.choise

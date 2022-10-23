@@ -37,21 +37,22 @@ class Board:
         """
 
         self.row_1 :list[bool] = 3*[None]
-        self.row_1 :list[bool] = 3*[None]
-        self.row_1 :list[bool] = 3*[None]
+        self.row_2 :list[bool] = 3*[None]
+        self.row_3 :list[bool] = 3*[None]
 
     
     def check_move(self,move :int) -> bool:
-        if move > 0 and move < 4: return True if self.row_1[move] is None else False
-        if move >3 and move < 7: return True if self.row_2[move%4] is None else False
-        if move > 6 and move < 10: return True if self.row_2[move%7] is None else False
+        new_move = move % 3
+        if move in [1,2,3]: return True if self.row_1[new_move-1] is None else False
+        if move in [4,5,6]: return True if self.row_2[new_move-1] is None else False
+        if move in [7,8,9]: return True if self.row_3[new_move-1] is None else False
         return False
 
     def make_move(self,move:int,choise:bool) -> None:
-        
-        if move > 0 and move < 4: self.row_1[move] = choise
-        if move >3 and move < 7: self.row_2[move%4] = choise
-        if move > 6 and move < 10:self.row_1[move%7] = choise
+        new_move = move % 3
+        if move in [1,2,3]: self.row_1[new_move-1] = choise
+        if move in [4,5,6]: self.row_2[new_move-1] = choise
+        if move in [7,8,9]:self.row_3[new_move-1] = choise
 
     def game_ended(self) -> bool:
         return self.count_full() == 8 or self.winer_exist()
@@ -82,16 +83,11 @@ class Board:
 
     def count_full(self) -> int:
         count :int = 0
-        for cas in self.row_1:
-            if not (cas is None):
+        for i in range(3):
+            if self.row_1[i] is not None:
                 count += 1
-
-        for cas in self.row_2:
-            if not (cas is None):
+            if self.row_2[i] is not None:
                 count += 1
-
-        for cas in self.row_3:
-            if not (cas is None):
+            if self.row_3[i] is not None:
                 count += 1
         return count
-    

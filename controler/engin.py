@@ -28,7 +28,9 @@ class Engin:
         player : Player = Player(name)
 
         if choise :
-            player.set_choise(choise if choise in ['X','x','O','o'] else 'X')
+            choise = choise if choise in ['X','x','O','o'] else 'X'
+            choise_bool :bool = True if choise in ['X','x'] else False
+            player.set_choise(choise_bool)
         else :
             player.set_choise( not self.players[0].get_choise())
 
@@ -49,7 +51,7 @@ class Engin:
 
 
     def play_a_round(self,number:int) -> None:
-        move :int = self.views['playing'].print(self.players[number])
+        move :int = self.views['playing'].print(number)
         
         while not self.board.check_move(move):
             move = self.views['playing'].print_error()
