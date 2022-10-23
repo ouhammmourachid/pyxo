@@ -44,6 +44,6 @@ def show_board(board:"Board",players:list["Player"]) -> None:
 
 
 def equals(a:bool,b:bool,c:bool) -> bool:
-    return (a == b and b == c)
+    return (a == b and b == c and a is not None)
 
 
