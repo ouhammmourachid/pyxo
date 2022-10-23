@@ -46,3 +46,20 @@ class Board:
         if move > 6 and move < 10: return True if self.row_2[move] is None else False
         return False
 
+    def make_move(self,move:int,choise:bool) -> None:
+        
+        if move > 0 and move < 4: self.row_1[move] = choise
+        if move >3 and move < 7: self.row_2[move] = choise
+        if move > 6 and move < 10:self.row_1[move] = choise
+    def game_ended(self) -> bool:
+        pass
+
+
+    def winer_exist(self) -> bool:
+        pass
+    def check_row(self) -> bool:
+        pass
+    def check_colum(self) -> bool:
+        pass
+    def check_corner(self) -> bool:
+        pass

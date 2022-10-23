@@ -57,16 +57,30 @@ class Engin:
 
     def playing(self) -> None:
        
-        winer = " "
-        #while winer is None:
+        number :int = 0
+        while self.winer is None:
 
-         #   self.play_a_round()
+            move :int = self.play_a_round(number)
+
+            self.board.make_move(move,self.players[number].choise)
+            self.check_winer(number)
+            number = (number+1)%2
 
         self.status = 'show_result'
+    
+    def check_winer(self,number:int) -> None:
+        if self.board.game_ended():
+            if self.board.winer_exist():
+                self.winer = self.players[number].name
+                self.players[number].points += 1
+            else:
+                self.winer = ""
+
+
 
     def show_winer(self) -> None:
 
-        if self.winer is None:
+        if self.winer == "":
             self.views['show_winer'].print_no_winer()
         else :
             self.views['show_winer'].print()
