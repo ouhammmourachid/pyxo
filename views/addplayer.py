@@ -17,5 +17,4 @@ class AddPlayer(View):
         self.controler.add_player(name_first_player,choise)
         name_second_player :str = str(input("     the name of the player - 2 - :\t"))
         self.controler.add_player(name_second_player)
-        print("hello-3-")
 
