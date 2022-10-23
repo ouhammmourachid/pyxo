@@ -27,7 +27,7 @@ def show_board(board:Board,players:list[Player]) -> None:
     row_2 :list[str] = [ bool_str(cas) for cas in board.row_2] 
     row_3 :list[str] = [ bool_str(cas) for cas in board.row_3] 
     
-    print("""    
+    print(f"""    
 
 
             _|___|___|___|_       |       _|___|___|___|_         
