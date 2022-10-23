@@ -65,7 +65,8 @@ class Engin:
             self.board.make_move(move,self.players[number].choise)
             self.check_winer(number)
             number = (number+1)%2
-
+        
+        self.board.reset()
         self.status = 'show_result'
     
     def check_winer(self,number:int) -> None:

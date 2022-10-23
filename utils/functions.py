@@ -1,5 +1,4 @@
 import os
-from models import Board,Player
 
 def clear() -> None:
 
@@ -21,13 +20,13 @@ def bool_str(boolean:bool) -> str:
 
 
 
-def show_board(board:Board,players:list[Player]) -> None:
+def show_board(board:"Board",players:list["Player"]) -> None:
     
     row_1 :list[str] = [ bool_str(cas) for cas in board.row_1] 
     row_2 :list[str] = [ bool_str(cas) for cas in board.row_2] 
     row_3 :list[str] = [ bool_str(cas) for cas in board.row_3] 
     
-    print("""    
+    print(f"""    
 
 
             _|___|___|___|_       |       _|___|___|___|_         
@@ -43,5 +42,8 @@ def show_board(board:Board,players:list[Player]) -> None:
         
         """)
 
+
+def equals(a:bool,b:bool,c:bool) -> bool:
+    return (a == b and b == c)
 
 
