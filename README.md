@@ -7,7 +7,7 @@ an easy way to create **XO game** with python.
 * you need to install the package from the pypi by `pip install pyxo`.
 * you are ready to play you just need create a game with the building Engin and the run easy .
 
-```{python}
+```python
 from pyxo import Engin
 
 game:Engin = Engin()
