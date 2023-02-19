@@ -10,12 +10,14 @@ class Playing(View):
     def print(self,number:int) -> int:
         clear()
         show_board(self.controler.board,self.controler.players)
-        move :int = int(input(f"  what is your next move  {self.controler.players[number].name}  :(1...9) \t"))
-        return move
+
+        try:
+            return int(input(f"  what is your next move  {self.controler.players[number].name}  :(1...9) \t"))
+        except Exception as ex:
+            return 100
 
     def print_error(self) -> int:
-
-        return int(input(" tnis nomber is not vailable chose an ather one:(1...9) \t"))
-
-        
-
+        try :
+            return int(input(" this nomber is not vailable chose an ather one:(1...9) \t"))
+        except Exception as ex:
+            return 100

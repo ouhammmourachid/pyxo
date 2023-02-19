@@ -3,7 +3,7 @@ from setuptools import setup,find_packages
 
 setup(
     name='pyxo',
-    version='0.3',
+    version='0.4',
     author='Rachid Ouhammou',
     author_email='rachidouhammou21@gmail.com',
     description='A package that can help create an XO game easly',
