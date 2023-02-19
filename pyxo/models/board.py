@@ -78,7 +78,7 @@ class Board:
     def check_corner(self) -> bool:
         
         if equals(self.row_1[0],self.row_2[1],self.row_3[2]) :return True
-        if equals(self.row_3[0],self.row_1[1],self.row_1[2]) :return True
+        if equals(self.row_3[0],self.row_2[1],self.row_1[2]) :return True
         return False
 
     def count_full(self) -> int:
