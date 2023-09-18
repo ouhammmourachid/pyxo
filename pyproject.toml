@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pyxo"
+version = "0.5.0"
+description = ""
+authors = ["ouhammmourachid <rachidouhammou21@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
