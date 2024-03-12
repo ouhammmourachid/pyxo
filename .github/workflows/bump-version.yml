@@ -36,5 +36,5 @@ jobs:
       - name: Install dependecies and bump version
         run: |
           poetry install
-          poetry run bumpver --${{ steps.bump.outputs.bump }}
+          poetry run bumpver update --${{ steps.bump.outputs.bump }}
           cat pyproject.toml
