@@ -21,6 +21,7 @@ jobs:
           else
             echo "::set-output name=bump::patch"
           fi
+          
         shell: /usr/bin/bash -e {0}
       # checkout the code
       - name: Checkout code
