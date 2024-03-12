@@ -33,12 +33,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-      - name: Install dependecies and bump version
+      - name: Install dependecies.
         run: |
           poetry install
+        # create a variable with the old version
+      - name: Get old version
+        id: old_version
+        run: |
+          echo "::set-output name=old_version::$(poetry version -s)"
+      - name: Bump version
+        run: |
           poetry run bumpver update --${{ steps.bump.outputs.bump }}
-          cat pyproject.toml
+        # create a variable with the new version
+      - name: Get new version
+        id: new_version
+        run: |
+          echo "::set-output name=new_version::$(poetry version -s)"
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: "Bump version from ${{ steps.old_version.outputs.old_version }} --> ${{ steps.new_version.outputs.new_version }}"
