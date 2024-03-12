@@ -38,3 +38,7 @@ jobs:
           poetry install
           poetry run bumpver update --${{ steps.bump.outputs.bump }}
           cat pyproject.toml
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
