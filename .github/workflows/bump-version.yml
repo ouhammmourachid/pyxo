@@ -47,12 +47,12 @@ jobs:
           poetry run bumpver update --${{ steps.bump.outputs.bump }}
         # create a variable with the new version
       - name: Get new version
-        id: version
+        id: version_
         run: |
           echo "new_version=$(poetry version -s)" >> $GITHUB_OUTPUT
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: "Bump version from ${{ steps.version.outputs.old_version }} --> ${{ steps.version.outputs.new_version }}"
+          message: "Bump version from ${{ steps.version.outputs.old_version }} --> ${{ steps.version_.outputs.new_version }}"
 
