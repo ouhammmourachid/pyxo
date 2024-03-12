@@ -16,15 +16,16 @@ jobs:
         run: |
           commit_message=$(git log -1 --pretty=%B)
           echo "Commit message: $commit_message"
-          if [[ "$commit_message" =~ .*"\[patch\]".* ]]; then
-            echo "bump=patch" >> $GITHUB_OUTPUT
-          elif [[ "$commit_message" =~ .*"\[minor\]".* ]]; then
-            echo "bump=minor" >> $GITHUB_OUTPUT
-          elif [[ "$commit_message" =~ .*"\[major\]".* ]]; then
-            echo "bump=major" >> $GITHUB_OUTPUT
+          if [[ "$commit_message" =~ .*"#patch".* ]]; then
+            echo "bump=patch" >> $GITHUB_ENV
+          elif [[ "$commit_message" =~ .*"#minor".* ]]; then
+            echo "bump=minor" >> $GITHUB_ENV
+          elif [[ "$commit_message" =~ .*"#major".* ]]; then
+            echo "bump=major" >> $GITHUB_ENV
           else
-            echo "bump=patch" >> $GITHUB_OUTPUT
+            echo "bump=patch" >> $GITHUB_ENV
           fi
+          echo "Bump type: ${{ steps.bump.outputs.bump }}"
         shell: /usr/bin/bash -e {0}
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
