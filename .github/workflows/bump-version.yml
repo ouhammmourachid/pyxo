@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v4
       # create and set it to patch or minor or major depending on the commit message
       - name: get bump type
-        id: bump
         run: |
           commit_message=$(git log -1 --pretty=%B)
           echo "Commit message: $commit_message"
@@ -39,20 +38,18 @@ jobs:
           poetry install
         # create a variable with the old version
       - name: Get old version
-        id: old_version
         run: |
-          echo "old_version={poetry version -s}" >> $GITHUB_OUTPUT
+          echo "old_version=$(poetry version -s)" >> $GITHUB_OUTPUT
       - name: Bump version
         run: |
-          poetry run bumpver update --${{ steps.bump.outputs.bump }}
+          poetry run bumpver update --${{ steps.outputs.bump }}
         # create a variable with the new version
       - name: Get new version
-        id: new_version
         run: |
-          echo "new_version={poetry version -s}" >> $GITHUB_OUTPUT
+          echo "new_version=$(poetry version -s)" >> $GITHUB_OUTPUT
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: "Bump version from ${{ steps.old_version.outputs.old_version }} --> ${{ steps.new_version.outputs.new_version }}"
+          message: "Bump version from ${{ steps.outputs.old_version }} --> ${{ steps.outputs.new_version }}"
 
