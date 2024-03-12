@@ -24,7 +24,6 @@ jobs:
           else
             echo "bump=patch" >> $GITHUB_ENV
           fi
-          echo "Bump type: ${{ env.bump }}"
         shell: /usr/bin/bash -e {0}
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
@@ -39,20 +38,18 @@ jobs:
           poetry install
         # create a variable with the old version
       - name: Get old version
-        id: version
         run: |
-          echo "old_version=$(poetry version -s)" >> $GITHUB_OUTPUT
+          echo "old_version=$(poetry version -s)" >> $GITHUB_ENV
       - name: Bump version
         run: |
           poetry run bumpver update --${{ env.bump }}
         # create a variable with the new version
       - name: Get new version
-        id: version_
         run: |
-          echo "new_version=$(poetry version -s)" >> $GITHUB_OUTPUT
+          echo "new_version=$(poetry version -s)" >> $GITHUB_ENV
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          message: "Bump version from ${{ steps.version.outputs.old_version }} --> ${{ steps.version_.outputs.new_version }}"
+          message: "Bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
 
