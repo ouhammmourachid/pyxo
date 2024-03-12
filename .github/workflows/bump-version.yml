@@ -11,17 +11,17 @@ jobs:
       - name: get bump type
         id: bump
         run: |
-          echo "Bump type: bump minor"
-          if [[ "bump minor" =~ .*"\[patch\]".* ]]; then
+          commit_message=$(git log -1 --pretty=%B)
+          echo "Commit message: $commit_message"
+          if [[ "$commit_message" =~ .*"\[patch\]".* ]]; then
             echo "::set-output name=bump::patch"
-          elif [[ "bump minor" =~ .*"\[minor\]".* ]]; then
+          elif [[ "$commit_message" =~ .*"\[minor\]".* ]]; then
             echo "::set-output name=bump::minor"
-          elif [[ "bump minor" =~ .*"\[major\]".* ]]; then
+          elif [[ "$commit_message" =~ .*"\[major\]".* ]]; then
             echo "::set-output name=bump::major"
           else
             echo "::set-output name=bump::patch"
           fi
-          
         shell: /usr/bin/bash -e {0}
       # checkout the code
       - name: Checkout code
