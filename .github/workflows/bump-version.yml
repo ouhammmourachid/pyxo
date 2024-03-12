@@ -7,11 +7,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Bump version and push tag
-        uses: jaumann/github-bumpversion-action@v0.0.7
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push changes
+      # create and set it to patch or minor or major depending on the commit message
+      - name: Bump version
+        uses: actions/checkout@v4
+      - name: get bump type
+        id: bump
         run: |
+          echo "Bump type: ${{ github.event.head_commit.message }}"
+          if [[ ${{ github.event.head_commit.message }} == *"[patch]"* ]]; then
+            echo "::set-output name=bump::patch"
+          elif [[ ${{ github.event.head_commit.message }} == *"[minor]"* ]]; then
+            echo "::set-output name=bump::minor"
+          elif [[ ${{ github.event.head_commit.message }} == *"[major]"* ]]; then
+            echo "::set-output name=bump::major"
+          else
+            echo "::set-output name=bump::patch"
+          fi
+      - name: Bump version
+        id: bump_version
+        run: |
+          poetry install
+          poetry run bumpver --${{ steps.bump.outputs.bump }}
           cat pyproject.toml
