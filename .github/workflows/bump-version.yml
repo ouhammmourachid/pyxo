@@ -8,21 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # create and set it to patch or minor or major depending on the commit message
-      - name: Bump version
-        uses: actions/checkout@v4
       - name: get bump type
         id: bump
         run: |
-          echo "Bump type: ${{ github.event.head_commit.message }}"
-          if [[ ${{ github.event.head_commit.message }} == *"[patch]"* ]]; then
+          echo "Bump type: bump minor"
+          if [[ "bump minor" =~ .*"\[patch\]".* ]]; then
             echo "::set-output name=bump::patch"
-          elif [[ ${{ github.event.head_commit.message }} == *"[minor]"* ]]; then
+          elif [[ "bump minor" =~ .*"\[minor\]".* ]]; then
             echo "::set-output name=bump::minor"
-          elif [[ ${{ github.event.head_commit.message }} == *"[major]"* ]]; then
+          elif [[ "bump minor" =~ .*"\[major\]".* ]]; then
             echo "::set-output name=bump::major"
           else
             echo "::set-output name=bump::patch"
           fi
+        shell: /usr/bin/bash -e {0}
       - name: Bump version
         id: bump_version
         run: |
