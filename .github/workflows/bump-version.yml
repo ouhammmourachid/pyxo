@@ -61,4 +61,4 @@ jobs:
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git push origin HEAD:mai
+          git push
