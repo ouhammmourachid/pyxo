@@ -50,9 +50,15 @@ jobs:
       - name: Get new version
         run: |
           echo "new_version=$(poetry version -s)" >> $GITHUB_ENV
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.PAT_TOKEN }}
-          message: "Bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
-          force: true
+      - name: Commit changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Bump version from ${{ env.old_version }} to ${{ env.new_version }}"
+
+      - name: Push changes
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git push origin HEAD:mai
