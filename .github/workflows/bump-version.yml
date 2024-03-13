@@ -55,3 +55,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: "Bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
+          force: true
