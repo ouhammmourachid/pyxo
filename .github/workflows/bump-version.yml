@@ -53,6 +53,6 @@ jobs:
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN }}
           message: "Bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
           force: true
