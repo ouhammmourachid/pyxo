@@ -44,6 +44,7 @@ jobs:
         run: |
           poetry run bumpver update --${{ env.bump }}
         # create a variable with the new version
+        
       - name: Get new version
         run: |
           echo "new_version=$(poetry version -s)" >> $GITHUB_ENV
@@ -52,4 +53,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: "Bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
-          
