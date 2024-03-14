@@ -27,10 +27,15 @@ jobs:
             echo "bump=minor" >> $GITHUB_ENV
           elif [[ "$commit_message" =~ .*"#major".* ]]; then
             echo "bump=major" >> $GITHUB_ENV
+          elif [[ "$commit_message" =~ .*"#bump".* ]]; then
+            echo "bump=yes" >> $GITHUB_ENV
           else
             echo "bump=patch" >> $GITHUB_ENV
           fi
         shell: /usr/bin/bash -e {0}
+      - name: Check if bump is set to yes
+        if: ${{ env.bump == 'yes' }}
+        run: exit 0
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -59,7 +64,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git add .
-          git commit -m "Bump version from ${{ env.old_version }} to ${{ env.new_version }}"
+          git commit -m "#bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
       - name: Push changes
         run: |
           git push https://ouhammmourachid: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@github.com/ouhammmourachid/pyxo.git
