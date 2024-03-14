@@ -57,7 +57,5 @@ jobs:
           git add .
           git commit -m "Bump version from ${{ env.old_version }} to ${{ env.new_version }}"
       - name: Push changes
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git push https://ouhammmourachid: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@github.com/ouhammmourachid/pyxo.git
