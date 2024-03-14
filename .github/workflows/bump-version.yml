@@ -1,22 +1,35 @@
 name: Bump version
+
 on:
   push:
     branches:
       - main
+
 permissions:
   contents: write
+
 jobs:
   build:
     if: "!contains(github.actor, 'github-actions[bot]')"
     runs-on: ubuntu-latest
+
     steps:
-    # checkout the code
+      - name: Check Commit Message
+        run: |
+          if [[ $(git log -1 --pretty=%B) == *"#bump"* ]]; then
+            echo "Commit contains #bump. Skipping workflow execution."
+            exit 78  # This exit code skips the workflow without failing
+          else
+            echo "Commit does not contain #bump. Proceeding with workflow execution."
+          fi
+        shell: /usr/bin/bash -e {0}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-      # create and set it to patch or minor or major depending on the commit message
-      - name: get bump type
+
+      - name: Get bump type
         run: |
           echo ${{ github.actor }}
           commit_message=$(git log -1 --pretty=%B)
@@ -27,44 +40,44 @@ jobs:
             echo "bump=minor" >> $GITHUB_ENV
           elif [[ "$commit_message" =~ .*"#major".* ]]; then
             echo "bump=major" >> $GITHUB_ENV
-          elif [[ "$commit_message" =~ .*"#bump".* ]]; then
-            echo "bump=yes" >> $GITHUB_ENV
           else
             echo "bump=patch" >> $GITHUB_ENV
           fi
         shell: /usr/bin/bash -e {0}
-      - name: Check if bump is set to yes
-        if: ${{ env.bump == 'yes' }}
-        run: exit 0
+
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
+
       - name: Upgrade pip & Install Poetry.
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-      - name: Install dependecies.
+
+      - name: Install dependencies.
         run: |
           poetry install
-        # create a variable with the old version
+
       - name: Get old version
         run: |
           echo "old_version=$(poetry version -s)" >> $GITHUB_ENV
+
       - name: Bump version
         run: |
           poetry run bumpver update --${{ env.bump }}
-        # create a variable with the new version
-        
+
       - name: Get new version
         run: |
           echo "new_version=$(poetry version -s)" >> $GITHUB_ENV
+
       - name: Commit changes
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
           git add .
           git commit -m "#bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
+
       - name: Push changes
         run: |
-          git push https://ouhammmourachid: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@github.com/ouhammmourachid/pyxo.git
+          git push https://github-actions[bot]:${{ secrets.PAT_TOKEN }}@github.com/ouhammmourachid/pyxo.git
