@@ -3,4 +3,4 @@ from pyxo.views import *
 from pyxo.utils import *
 from pyxo.models import *
 
-__version__ = '1.0.4'
+__version__ = '1.0.5'
