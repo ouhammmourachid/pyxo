@@ -60,4 +60,4 @@ jobs:
         env:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          git push origin HEAD:main
+          git push https://ouhammmourachid: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@github.com/ouhammmourachid/pyxo.git
