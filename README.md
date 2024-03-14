@@ -1,6 +1,6 @@
 ## Pyxo package :
 
-an easy way to create **XO game** with python.
+An easy way to create **XO game** with python.
 
 #### get staretd:
 
