@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    if: "!contains(github.actor, 'github-actions[bot]')"
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
