@@ -151,9 +151,6 @@ jobs:
       - name: Get new version
         run: |
           echo "new_version=$(poetry version -s)" >> $GITHUB_ENV
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-  
       - name: Set up SSH and Create or Modify File
         uses: webfactory/ssh-agent@v0.5.4
         with:
