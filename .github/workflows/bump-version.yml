@@ -85,13 +85,21 @@
 name: Update File
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'the type of bumpversion'
+        required: true
+        default: 'patch'
+        options:
+        - patch
+        - minor
+        - major
+  
 
 jobs:
   build:
-    if: "!contains(github.event.head_commit.message, '#bump')"
+    # if: "!contains(github.event.head_commit.message, '#bump')"
     runs-on: ubuntu-latest
 
     steps:
@@ -109,23 +117,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-
-      - name: Get bump type
-        run: |
-          echo ${{ github.actor }}
-          commit_message=$(git log -1 --pretty=%B)
-          echo "Commit message: $commit_message"
-          if [[ "$commit_message" =~ .*"#patch".* ]]; then
-            echo "bump=patch" >> $GITHUB_ENV
-          elif [[ "$commit_message" =~ .*"#minor".* ]]; then
-            echo "bump=minor" >> $GITHUB_ENV
-          elif [[ "$commit_message" =~ .*"#major".* ]]; then
-            echo "bump=major" >> $GITHUB_ENV
-          else
-            echo "bump=patch" >> $GITHUB_ENV
-          fi
-        shell: bash
-
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
@@ -146,7 +137,7 @@ jobs:
 
       - name: Bump version
         run: |
-          poetry run bumpver update --${{ env.bump }}
+          poetry run bumpver update --${{ github.event.inputs.bump_type }}
 
       - name: Get new version
         run: |
@@ -169,3 +160,12 @@ jobs:
       - name: Push Changes via SSH
         run: |
           git push git@github.com:ouhammmourachid/pyxo.git main
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: env.new_version
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
