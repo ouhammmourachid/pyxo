@@ -6,23 +6,20 @@ on:
   workflow_dispatch
 
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  release:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+permissions:
+  contents: write
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+jobs:
+  release:
+    name: Release pushed tag
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: set verion
-        run: echo "version=1.0.0" >> $GITHUB_ENV
-      - uses: CupOfTea696/gh-action-auto-release@v1.0.0
-        with:
-          title: "pyxo ${{env.version}}"
-          tag: "v${{env.version}}"
-          draft: false
-          regex: "/^Release: ${{ env.version }}$/i"
+      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: v0.1.2
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
