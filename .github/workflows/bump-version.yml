@@ -163,7 +163,7 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: env.new_version
+          tag: "v$env.new_version}}"
         run: |
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
