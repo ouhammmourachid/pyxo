@@ -86,6 +86,15 @@ name: Update File
 
 on:
   workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'the type of bumpversion'
+        required: true
+        default: 'patch'
+        options:
+        - patch
+        - minor
+        - major
   
 
 jobs:
@@ -128,7 +137,7 @@ jobs:
 
       - name: Bump version
         run: |
-          poetry run bumpver update --${{ env.bump }}
+          poetry run bumpver update --${{ github.event.inputs.bump_type }}
 
       - name: Get new version
         run: |
