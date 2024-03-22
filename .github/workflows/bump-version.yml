@@ -103,7 +103,7 @@ jobs:
           else
             echo "Commit does not contain #bump. Proceeding with workflow execution."
           fi
-        shell: /usr/bin/bash -e {0}
+        shell: bash
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -124,7 +124,7 @@ jobs:
           else
             echo "bump=patch" >> $GITHUB_ENV
           fi
-        shell: /usr/bin/bash -e {0}
+        shell: bash
 
       - name: Set up Python 3.8
         uses: actions/setup-python@v2
@@ -167,7 +167,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
           git add file.txt
-          git commit -m "Update file.txt"
+          git commit -m "#bump version from ${{ env.old_version }} --> ${{ env.new_version }}"
         
       - name: Push Changes via SSH
         run: |
