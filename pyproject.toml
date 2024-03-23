@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "pyxo"
-version = "2.1.2"
+version = "3.0.0"
 description = ""
 authors = ["ouhammmourachid <rachidouhammou21@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
 [bumpver]
-current_version = "2.1.2"
+current_version = "3.0.0"
 version_pattern = "MAJOR.MINOR.PATCH"
 
 [bumpver.file_patterns]
