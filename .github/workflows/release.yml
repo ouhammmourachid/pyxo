@@ -18,6 +18,8 @@ jobs:
         uses: actions/checkout@v4
       - name: install dependecies
         uses: ouhammmourachid/poetry-install@main
+        with:
+          python-version: "3.12"
       - name: test
-        run: poetry show --tree
+        run: poetry run python --version
 
