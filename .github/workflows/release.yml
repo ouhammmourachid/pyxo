@@ -17,9 +17,9 @@ jobs:
       - name: checout
         uses: actions/checkout@v4
       - name: install dependecies
-        uses: ouhammmourachid/poetry-install@main
+        uses: ouhammmourachid/poetry-install@v1
         with:
-          python-version: "3.12"
+          python-version: "3.11"
       - name: test
         run: poetry run python --version
 
