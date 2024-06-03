@@ -1,0 +1,45 @@
+name: Upload Python Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump-type:
+        description: 'Bump type'
+        required: true
+        default: 'patch'
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: main
+
+    - name: install dependencies
+      uses: ouhammmourachid/poetry-install@v2
+
+    - name: bump version
+      uses: ouhammmourachid/bumpversion-action@v2
+      with:
+        bump-type: ${{ github.event.inputs.bump-type }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build package
+      run: poetry build
+    - name: Publish package
+      run: |
+        poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+        poetry publish
