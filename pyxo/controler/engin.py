@@ -85,6 +85,7 @@ class Engin:
 
         if self.winer == "":
             self.views['show_winer'].print_no_winer()
+            self.winer = None
         else :
             self.views['show_winer'].print()
             self.winer = None
