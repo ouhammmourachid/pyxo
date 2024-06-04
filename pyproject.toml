@@ -20,12 +20,12 @@ version_pattern = "MAJOR.MINOR.PATCH"
     "^__version__ = '{version}'$",
 ]
 
+"README.md" = [
+    "v{version}$"
+]
+
 [tool.poetry.dependencies]
 python = "^3.10"
-
-
-[tool.poetry.group.dev.dependencies]
-bumpver = "^2023.1129"
 
 [build-system]
 requires = ["poetry-core"]
