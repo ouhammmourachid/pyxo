@@ -27,11 +27,6 @@ version_pattern = "MAJOR.MINOR.PATCH"
 [tool.poetry.dependencies]
 python = "^3.10"
 
-
-bumpver = "^2023.1129"
-[tool.poetry.group.dev.dependencies]
-bumpver = "^2023.1129"
-
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
