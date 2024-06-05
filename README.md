@@ -26,7 +26,7 @@ $ pyxo
             | | | | (__    | | (_| | (__    | | (_) |  __/
             |_| |_|\___|   |_|\__,_|\___|   |_|\___/ \___|
 
-            by ouhammmourachid                      v1.1.2
+            by ouhammmourachid                      v1.2.0
           
           
                 welcome to the game [X,O]
