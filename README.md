@@ -18,6 +18,8 @@ game.run()
 or by running
 ```shell
 $ pyxo
+# or
+$ python -m pyxo
 ```
 ```shell
            _____ _        _____            _____          
