@@ -43,7 +43,7 @@ $ python -m pyxo
             | | | | (__    | | (_| | (__    | | (_) |  __/
             |_| |_|\___|   |_|\__,_|\___|   |_|\___/ \___|
 
-            by ouhammmourachid                      v1.2.1
+            by ouhammmourachid                      v1.2.2
 
 
                 welcome to the game [X,O]
