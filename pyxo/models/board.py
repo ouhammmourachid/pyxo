@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pyxo.utils import equals
 
 
@@ -18,9 +20,9 @@ class Board:
         ```
         """
 
-        self.row_1: list[bool] = 3 * [None]
-        self.row_2: list[bool] = 3 * [None]
-        self.row_3: list[bool] = 3 * [None]
+        self.row_1: list[Optional[bool]] = 3 * [None]
+        self.row_2: list[Optional[bool]] = 3 * [None]
+        self.row_3: list[Optional[bool]] = 3 * [None]
 
     def reset(self) -> None:
         """After the end of the game of XO
@@ -32,9 +34,9 @@ class Board:
         ```
         """
 
-        self.row_1: list[bool] = 3 * [None]
-        self.row_2: list[bool] = 3 * [None]
-        self.row_3: list[bool] = 3 * [None]
+        self.row_1 = 3 * [None]
+        self.row_2 = 3 * [None]
+        self.row_3 = 3 * [None]
 
     def check_move(self, move: int) -> bool:
         new_move = move % 3

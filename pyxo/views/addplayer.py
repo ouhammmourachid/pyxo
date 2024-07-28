@@ -1,5 +1,10 @@
+from typing import TYPE_CHECKING
+
 from pyxo.utils import clear
-from pyxo.views import View
+from pyxo.views.view import View
+
+if TYPE_CHECKING:
+    from pyxo.controler import Engin
 
 
 class AddPlayer(View):

@@ -3,3 +3,5 @@ __pycache__/
 build/
 dist/
 pyxo.egg-info/
+.mypy_cache/
+.ruff_cache/

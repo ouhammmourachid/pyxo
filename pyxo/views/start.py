@@ -1,5 +1,5 @@
 from pyxo.utils import clear
-from pyxo.views import View
+from pyxo.views.view import View
 
 
 class Start(View):

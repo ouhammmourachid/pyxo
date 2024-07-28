@@ -14,6 +14,10 @@ build:
 publish:
 	poetry publish
 
+.PHONY: run
+run:install
+	poetry run python -m pyxo
+
 .PHONY: test
 test:
 	poetry run pytest

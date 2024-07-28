@@ -1,5 +1,10 @@
-from pyxo.models import *
-from pyxo.views import *
+from typing import TYPE_CHECKING
+
+from pyxo.models import Board, Player
+from pyxo.views import AddPlayer, PlayAgain, Playing, ShoWiner, Start
+
+if TYPE_CHECKING:
+    from pyxo.views.view import View
 
 
 class Engin:
@@ -15,13 +20,13 @@ class Engin:
         self.players: list[Player] = list()
         self.board: Board = Board()
         self.status: str = "not_started"
-        self.winer: str = None
+        self.winer: str | None = None
 
     def start_game(self) -> None:
         self.views["start"].print()
         self.status = "started"
 
-    def add_player(self, name: str, choise: str = None) -> None:
+    def add_player(self, name: str, choise: str | None = None) -> None:
         player: Player = Player(name)
 
         if choise:
@@ -50,7 +55,7 @@ class Engin:
             self.status = "exit"
 
     def play_a_round(self, number: int) -> None:
-        move: int = self.views["playing"].print(number)
+        move: int | None = self.views["playing"].print(number)
 
         while not self.board.check_move(move):
             move = self.views["playing"].print_error()

@@ -1,14 +1,8 @@
-from abc import ABC, abstractmethod
+from pyxo.views.addplayer import AddPlayer
+from pyxo.views.playagain import PlayAgain
+from pyxo.views.playing import Playing
+from pyxo.views.showiner import ShoWiner
+from pyxo.views.start import Start
+from pyxo.views.view import View
 
-
-class View(ABC):
-    @abstractmethod
-    def print(self) -> None:
-        pass
-
-
-from pyxo.views.addplayer import *
-from pyxo.views.playagain import *
-from pyxo.views.playing import *
-from pyxo.views.showiner import *
-from pyxo.views.start import *
+__all__ = ["AddPlayer", "PlayAgain", "Playing", "ShoWiner", "Start", "View"]

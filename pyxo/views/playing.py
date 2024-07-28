@@ -1,5 +1,5 @@
 from pyxo.utils import clear, show_board
-from pyxo.views import View
+from pyxo.views.view import View
 
 
 class Playing(View):
