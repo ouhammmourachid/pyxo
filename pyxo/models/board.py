@@ -38,7 +38,7 @@ class Board:
         self.row_2 = 3 * [None]
         self.row_3 = 3 * [None]
 
-    def check_move(self, move: int) -> bool:
+    def check_move(self, move: int | None) -> bool:
         new_move = move % 3
         if move in [1, 2, 3]:
             return True if self.row_1[new_move - 1] is None else False

@@ -54,7 +54,7 @@ class Engin:
         else:
             self.status = "exit"
 
-    def play_a_round(self, number: int) -> None:
+    def play_a_round(self, number: int) -> int | None:
         move: int | None = self.views["playing"].print(number)
 
         while not self.board.check_move(move):
