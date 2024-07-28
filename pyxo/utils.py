@@ -1,4 +1,8 @@
 import os
+# from typing import TYPE_CHECKING
+
+# if TYPE_CHECKING:
+#     from pyxo.models import Board, Player
 
 
 def clear() -> None:
@@ -22,7 +26,7 @@ def bool_str(boolean: bool) -> str:
         return "O"
 
 
-def show_board(board: "Board", players: list["Player"]) -> None:
+def show_board(board: 'Board', players: list['Player']) -> None:
     row_1: list[str] = [bool_str(cas) for cas in board.row_1]
     row_2: list[str] = [bool_str(cas) for cas in board.row_2]
     row_3: list[str] = [bool_str(cas) for cas in board.row_3]

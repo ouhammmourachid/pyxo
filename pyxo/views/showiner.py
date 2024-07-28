@@ -1,10 +1,10 @@
-from pyxo.views import View 
 from pyxo.utils import clear
+from pyxo.views import View
+
 
 class ShoWiner(View):
-
-    def __init__(self,controler:"Engin") -> None:
-        self.controler:"Engin" = controler
+    def __init__(self, controler: "Engin") -> None:
+        self.controler: "Engin" = controler
 
     def print(self) -> None:
         clear()
@@ -12,4 +12,3 @@ class ShoWiner(View):
 
     def print_no_winer(self) -> None:
         print("\n\n   draw no winer 🫠")
-
