@@ -2,6 +2,21 @@
 
 an easy way to create **XO game** with python.
 
+<p align="center">
+    <a href="https://github.com/ouhammmourachid/pyxo/blob/main/LICENSE" >
+        <img src="https://img.shields.io/github/license/ouhammmourachid/pyxo"
+            alt="GitHub LICENSE" /></a>
+    <a href="https://pypistats.org/packages/pyxo">
+        <img src="https://img.shields.io/pypi/dm/pyxo"
+            alt="Mounthly Download" /></a>
+    <a href="https://pypi.org/project/pyxo/">
+        <img src="https://img.shields.io/pypi/v/pyxo.svg?style=flat"
+            alt="latest version" /></a>
+    <a href="https://pypi.org/project/pyxo/">
+        <img src="https://img.shields.io/pypi/pyversions/pyxo"
+            alt="suported python version" /></a>
+</p>
+
 #### get staretd:
 
 * you need to install the package from the pypi by `pip install pyxo`.
