@@ -21,7 +21,7 @@ version_pattern = "MAJOR.MINOR.PATCH"
 ]
 
 "pyxo/__init__.py" = [
-    "^__version__ = '{version}'$",
+    "__version__ = '{version}'$",
 ]
 
 "README.md" = [
