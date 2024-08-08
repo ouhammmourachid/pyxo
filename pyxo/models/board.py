@@ -27,7 +27,7 @@ class Board:
     def reset(self) -> None:
         """After the end of the game of XO
         we need to reset the board to do that we use this
-        folowing code :
+        following code :
         ```python
         >>> xo_board = Board()
         >>> xo_board.reset()
@@ -48,14 +48,14 @@ class Board:
             return True if self.row_3[new_move - 1] is None else False
         return False
 
-    def make_move(self, move: int, choise: bool) -> None:
+    def make_move(self, move: int, choice: bool) -> None:
         new_move = move % 3
         if move in [1, 2, 3]:
-            self.row_1[new_move - 1] = choise
+            self.row_1[new_move - 1] = choice
         if move in [4, 5, 6]:
-            self.row_2[new_move - 1] = choise
+            self.row_2[new_move - 1] = choice
         if move in [7, 8, 9]:
-            self.row_3[new_move - 1] = choise
+            self.row_3[new_move - 1] = choice
 
     def game_ended(self) -> bool:
         return self.count_full() == 8 or self.winer_exist()

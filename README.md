@@ -12,9 +12,15 @@ an easy way to create **XO game** with python.
     <a href="https://pypi.org/project/pyxo/">
         <img src="https://img.shields.io/pypi/v/pyxo.svg?style=flat"
             alt="latest version" /></a>
-    <a href="https://pypi.org/project/pyxo/">
+    <a href="https://pypi.org/project/mermaid-py/">
         <img src="https://img.shields.io/pypi/pyversions/pyxo"
-            alt="suported python version" /></a>
+            alt="supported python version" /></a>
+    <a href="https://github.com/astral-sh/ruff">
+        <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json"
+            alt="ruff badge"/></a>
+    <a href="https://snyk.io/advisor/python/pyxo">
+        <img src="https://snyk.io/advisor/python/pyxo/badge.svg"
+            alt="mermaid-py on snyk"/></a>
 </p>
 
 #### get staretd:
@@ -48,7 +54,7 @@ $ python -m pyxo
 
                 welcome to the game [X,O]
 
-      that is the roles you should chose one the nomber between (1...9)
+      that is the roles you should chose one the number between (1...9)
 
                         _|___|___|___|_
                          | 1 | 2 | 3 |

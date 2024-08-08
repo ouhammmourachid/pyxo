@@ -32,5 +32,8 @@ repos:
     rev: 'v1.9.0'
     hooks:
       - id: mypy
-        additional_dependencies: [types-requests, types-PyYAML, types-toml]
-        args: ["--exclude", "requests-stubs"]
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell
+        additional_dependencies: [tomli]

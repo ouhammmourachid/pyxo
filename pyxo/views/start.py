@@ -3,12 +3,12 @@ from pyxo.views.view import View
 
 
 class Start(View):
-    """this class represent this view of the strat of the game
+    """this class represent this view of the start of the game
     that show the rule of the game of the XO like this :
 
 
                     {welcome to the game [X,O] }
-    that is the roles you should chose one the nomber between {1...9}
+    that is the roles you should chose one the number between {1...9}
 
                         _|___|___|___|_
                          | 1 | 2 | 3 |
@@ -40,7 +40,7 @@ class Start(View):
 
                 welcome to the game [X,O]
 
-      that is the roles you should chose one the nomber between (1...9)
+      that is the roles you should chose one the number between (1...9)
 
                         _|___|___|___|_
                          | 1 | 2 | 3 |

@@ -26,15 +26,15 @@ class Engin:
         self.views["start"].print()
         self.status = "started"
 
-    def add_player(self, name: str, choise: str | None = None) -> None:
+    def add_player(self, name: str, choice: str | None = None) -> None:
         player: Player = Player(name)
 
-        if choise:
-            choise = choise if choise in ["X", "x", "O", "o"] else "X"
-            choise_bool: bool = True if choise in ["X", "x"] else False
-            player.set_choise(choise_bool)
+        if choice:
+            choice = choice if choice in ["X", "x", "O", "o"] else "X"
+            choice_bool: bool = True if choice in ["X", "x"] else False
+            player.set_choice(choice_bool)
         else:
-            player.set_choise(not self.players[0].get_choise())
+            player.set_choice(not self.players[0].get_choice())
 
         self.players.append(player)
 
@@ -66,7 +66,7 @@ class Engin:
         while self.winer is None:
             move: int = self.play_a_round(number)
 
-            self.board.make_move(move, self.players[number].choise)
+            self.board.make_move(move, self.players[number].choice)
             self.check_winer(number)
             number = (number + 1) % 2
 

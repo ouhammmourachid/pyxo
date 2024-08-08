@@ -1,8 +1,8 @@
 import os
+from typing import TYPE_CHECKING
 
-# from typing import TYPE_CHECKING
-
-# from pyxo.models import Board, Player
+if TYPE_CHECKING:
+    from pyxo.models import Board, Player
 
 
 def clear() -> None:

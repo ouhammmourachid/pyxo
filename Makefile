@@ -1,3 +1,8 @@
+
+# variables
+POETRY_RUN = poetry run
+PRE_COMMIT_CMD = $(POETRY_RUN) pre-commit
+
 .PHONY: install
 install:
 	poetry install
@@ -16,19 +21,19 @@ publish:
 
 .PHONY: run
 run:install
-	poetry run python -m pyxo
+	$(POETRY_RUN) python -m pyxo
 
 .PHONY: test
 test:
-	poetry run pytest
+	$(POETRY_RUN) pytest
 
 .PHONY: install-pre-commit
 install-pre-commit:
-	poetry run pre-commit uninstall && poetry run pre-commit install
+	$(PRE_COMMIT_CMD) uninstall && $(PRE_COMMIT_CMD) install
 
 .PHONY: lint
 lint:
-	poetry run pre-commit run --all-files
+	$(PRE_COMMIT_CMD) run --all-files
 
 
 .PHONY: coverage
@@ -38,6 +43,6 @@ coverage:
 .PHONY: bumpversion
 bumpversion:
 	$(eval name=$(filter-out $@,$(MAKECMDGOALS)))
-	poetry run bumpver update --$(name)
+	$(POETRY_RUN) bumpver update --$(name)
 %:
 	@:

@@ -1,4 +1,4 @@
-from pyxo.controler import Engin
+from pyxo.controller import Engin
 
 
 def main():

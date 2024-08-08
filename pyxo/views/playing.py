@@ -3,17 +3,17 @@ from pyxo.views.view import View
 
 
 class Playing(View):
-    def __init__(self, controler: "Engin") -> None:
-        self.controler: "Engin" = controler
+    def __init__(self, controller: "Engin") -> None:
+        self.controller: "Engin" = controller
 
     def print(self, number: int) -> int:
         clear()
-        show_board(self.controler.board, self.controler.players)
+        show_board(self.controller.board, self.controller.players)
 
         try:
             return int(
                 input(
-                    f"  what is your next move  {self.controler.players[number].name}  :(1...9) \t"
+                    f"  what is your next move  {self.controller.players[number].name}  :(1...9) \t"
                 )
             )
         except Exception:
@@ -22,7 +22,7 @@ class Playing(View):
     def print_error(self) -> int:
         try:
             return int(
-                input(" this nomber is not vailable chose an ather one:(1...9) \t")
+                input(" this number is not available chose an other one:(1...9) \t")
             )
         except Exception:
             return 100
